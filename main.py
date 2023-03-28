@@ -22,7 +22,7 @@ def get_weather():
   url = "http://api.openweathermap.org/data/2.5/weather?q=harbin,cn&APPID=17c8e5e0b500c4d38c07a445f0d5e523"
   res = requests.get(url).json()
   weather = res['weather'][0]
-  return weather, math.floor(res['main']['temp'])
+  return weather, math.floor(res['main']['temp']-273.15)
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
