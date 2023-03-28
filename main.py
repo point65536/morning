@@ -19,10 +19,10 @@ template_id = os.environ["TEMPLATE_ID"]
 
 
 def get_weather():
-  url = "http://samples.openweathermap.org/data/2.5/weather?q={哈尔滨}&appid=b1b15e88fa797225412429c1c50c122a1"
+  url = "http://api.openweathermap.org/data/2.5/weather?q=harbin,cn&APPID=17c8e5e0b500c4d38c07a445f0d5e523"
   res = requests.get(url).json()
-  weather = res['data']['list'][0]
-  return weather['weather'], math.floor(weather['temp'])
+  weather = res['weather'][0]
+  return weather, math.floor(res['main']['temp'])
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
